@@ -1,6 +1,6 @@
 # MERN-boilerplate
 
-** A replica application of a social blogging site (i.e a Medium clone) built with a local passportJS/JWT user authentication and the latest React hooks on the client side. **
+**A replica application of a social blogging site (i.e a Medium clone) built with a local passportJS/JWT user authentication and the latest React hooks on the client side.**
 ---
 
 ## Features
@@ -22,8 +22,10 @@ Client
 ## Demo
 
 ## Installation
+
 Clone repo
-** Server Side **
+
+**Server Side**
 ```
 $ cd server 
 $ npm install 
@@ -31,7 +33,7 @@ $ npm start
 ```
 Server will run on https://localhost:8000
 
-** Client side **
+**Client side**
 ```
 $ cd client
 $ npm install 
