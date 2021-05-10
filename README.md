@@ -19,9 +19,9 @@ Client
 *Content : Create, View/Edit/Delete user’s content pages
 *Bootstrap framework for a responsive layout on all devices
 
-##Demo
+## Demo
 
-##Installation
+## Installation
 **Server Side**
 ```
 Clone repo
@@ -39,7 +39,7 @@ $ npm start
 ```
 App will load on https://localhost:3000
 
-##License
+## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
