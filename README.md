@@ -2,7 +2,7 @@
 
 
 
-### A replica application of a social blogging site (i.e a Medium clone) built with a local passportJS/JWT user authentication and the latest    React hooks on the client side.**
+### A replica application of a social blogging site (i.e a Medium clone) built with a local passportJS/JWT user authentication and the latest    React hooks on the client side.
 
 
 ## Features
