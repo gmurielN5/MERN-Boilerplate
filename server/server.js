@@ -26,7 +26,6 @@ mongoose
 mongoose.Promise = global.Promise;
 
 // CORS Configuration
-// Reconfigure later with https://www.digitalocean.com/community/tutorials/how-to-secure-node-js-applications-with-a-content-security-policy
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
