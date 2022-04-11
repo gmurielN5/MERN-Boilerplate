@@ -8,6 +8,8 @@ const path = require("path")
 require("dotenv").config()
 require("./controllers/authController") // Passport Strategy
 
+const PORT = process.env.PORT || 5000
+
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -79,6 +81,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"))
 })
 // start the server
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`)
 })
