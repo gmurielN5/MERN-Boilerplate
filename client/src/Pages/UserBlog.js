@@ -1,11 +1,11 @@
-import React, { useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import { Container } from "reactstrap";
-import { getUserPosts } from "../Services/ContentService";
-import { AuthContext } from "../Context/AuthContext";
+import React, { useEffect, useContext } from "react"
+import { useParams } from "react-router-dom"
+import { Container } from "reactstrap"
+import { getUserPosts } from "../Services/ContentService"
+import { AuthContext } from "../Context/AuthContext"
 
-import ProfileNav from "../Components/ProfileNavbar";
-import BlogList from "../Components/BlogList";
+import ProfileNav from "../Components/Nav/ProfileNavbar"
+import BlogList from "../Components/BlogList"
 
 const UserBlog = () => {
   const {
@@ -15,21 +15,21 @@ const UserBlog = () => {
     filteredArticles,
     user,
     isAuthenticated,
-  } = useContext(AuthContext);
+  } = useContext(AuthContext)
 
-  let params = useParams();
+  let params = useParams()
 
   useEffect(() => {
-    let didCancel = false;
+    let didCancel = false
     const fetchPosts = () => {
-      getUserPosts(params.username, dispatch, didCancel);
-    };
-    fetchPosts();
-    dispatchFilter({ type: "SHOW_ALL" });
+      getUserPosts(params.username, dispatch, didCancel)
+    }
+    fetchPosts()
+    dispatchFilter({ type: "SHOW_ALL" })
     return () => {
-      didCancel = true;
-    };
-  }, [params.username, dispatch, dispatchFilter]);
+      didCancel = true
+    }
+  }, [params.username, dispatch, dispatchFilter])
 
   return (
     <Container fluid>
@@ -46,7 +46,7 @@ const UserBlog = () => {
         />
       </Container>
     </Container>
-  );
-};
+  )
+}
 
-export default UserBlog;
+export default UserBlog

@@ -1,33 +1,34 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react"
+import { Link } from "react-router-dom"
 import {
   Row,
   Col,
-  ButtonDropdown,
+  UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-} from "reactstrap";
-import { AuthContext } from "../Context/AuthContext";
-import { removeToken } from "../util";
-import Avatar from "./Avatar";
+} from "reactstrap"
+import { AuthContext } from "../../Context/AuthContext"
+import { removeToken } from "../../util"
+import Avatar from "./Avatar"
 
-const DropdownNav = () => {
-  const { user, setUser, setIsAuthenticated } = useContext(AuthContext);
+const SubNav = () => {
+  const { user, setUser, setIsAuthenticated } = useContext(AuthContext)
 
   //Dropdown button
-  const [dropdownOpen, setOpen] = useState(false);
-  const toggleButton = () => setOpen(!dropdownOpen);
+  const [dropdownOpen, setOpen] = useState(false)
+  const toggleButton = () => setOpen(!dropdownOpen)
 
   const LoggoutHandler = (e) => {
-    removeToken("token");
-    setUser(null);
-    setIsAuthenticated(false);
-  };
+    removeToken("token")
+    setUser(null)
+    setIsAuthenticated(false)
+  }
 
   return (
-    <ButtonDropdown
-      className="dropdownButton"
+    <UncontrolledDropdown
+      direction="down"
+      nav
       isOpen={dropdownOpen}
       toggle={toggleButton}
     >
@@ -55,14 +56,13 @@ const DropdownNav = () => {
           <Link to={`/post/${user.username}`}>Your Stories</Link>
         </DropdownItem>
         <DropdownItem>
-          {" "}
           <Link to={`/user/${user.id}`}>Settings</Link>
         </DropdownItem>
         <DropdownItem divider />
         <DropdownItem onClick={LoggoutHandler}>Sign out</DropdownItem>
       </DropdownMenu>
-    </ButtonDropdown>
-  );
-};
+    </UncontrolledDropdown>
+  )
+}
 
-export default DropdownNav;
+export default SubNav

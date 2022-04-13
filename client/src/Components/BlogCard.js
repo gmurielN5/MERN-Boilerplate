@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 import {
   Row,
   Col,
@@ -10,10 +10,10 @@ import {
   CardBody,
   CardTitle,
   Button,
-} from "reactstrap";
-import { deletePost } from "../Services/ContentService";
-import Avatar from "../Components/Avatar";
-import moment from "moment";
+} from "reactstrap"
+import { deletePost } from "../Services/ContentService"
+import Avatar from "./Nav/Avatar"
+import moment from "moment"
 
 const BlogCard = ({ article, user, dispatch }) => {
   return (
@@ -90,7 +90,7 @@ const BlogCard = ({ article, user, dispatch }) => {
         )}
       </Card>
     </>
-  );
-};
+  )
+}
 
-export default BlogCard;
+export default BlogCard

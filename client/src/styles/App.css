@@ -133,9 +133,6 @@ hr {
   border: none;
 }
 
-.dropdownButton {
-  margin-right: 220px;
-}
 /* ================================= 
   FORM
 ==================================== */
@@ -191,21 +188,9 @@ img {
   top: 0.2em;
 }
 /* MAIN NAV -------- */
-.navbar {
-  align-items: flex-start;
+.dropdown-menu.show {
+  transform: translate3d(-100px, 55px, 0px);
 }
-.nav-item {
-  padding: 10px;
-}
-.navbar a {
-  text-decoration: none;
-  color: rgba(41, 41, 41, 1);
-}
-
-.dropDownIcons.show {
-  display: inline-flex;
-}
-
 /* ICONS -------- */
 
 .icons {

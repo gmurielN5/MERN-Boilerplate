@@ -1,23 +1,21 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { Container } from "reactstrap";
+import React from "react"
+import { Route, Switch } from "react-router-dom"
+import { Container } from "reactstrap"
 
-import ProtectedRoute from "./ProtectedRoute";
-import UnprotectedRoute from "./UnprotectedRoute";
+import ProtectedRoute from "./ProtectedRoute"
+import UnprotectedRoute from "./UnprotectedRoute"
 
-import Navbar from "../Components/Navbar";
-import Public from "../Pages/Public";
-import Signup from "../Pages/SignUp";
-import Login from "../Pages/Login";
-import Settings from "../Pages/Settings";
-import BlogForm from "../Pages/BlogForm";
-import UserBlog from "../Pages/UserBlog";
-import Post from "../Pages/Post";
-import NotFound from "../Pages/NotFound";
+import Navbar from "../Components/Nav/Navbar"
+import Public from "../Pages/Public"
+import Signup from "../Pages/SignUp"
+import Login from "../Pages/Login"
+import Settings from "../Pages/Settings"
+import BlogForm from "../Pages/BlogForm"
+import UserBlog from "../Pages/UserBlog"
+import Post from "../Pages/Post"
+import NotFound from "../Pages/NotFound"
 
-// Navbar = mobile isauthenticated remove hamburger and add avatar
-
-//Routes to do
+// ! Routes TO DO
 // USER ROUTES = /signup Post route _ signup
 //              /user/:id GET/PUT/DELETE routes _Settings
 
@@ -25,9 +23,10 @@ import NotFound from "../Pages/NotFound";
 //                = /post/:username  GET/DELETE get all posts and delete
 //                = /post/:username/:id GET AND PUT articles by id
 
-// TO DO
-// not found page to design
-// blog page to design
+// ? TO DO
+// ? design Homepage
+// ? not found page to design
+// ? blog page to design
 
 function AppRoutes() {
   return (
@@ -44,7 +43,7 @@ function AppRoutes() {
         <Route component={NotFound} />
       </Switch>
     </Container>
-  );
+  )
 }
 
-export default AppRoutes;
+export default AppRoutes
