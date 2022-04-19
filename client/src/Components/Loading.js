@@ -1,8 +1,8 @@
-import React from "react";
-import { useSpring, animated } from "react-spring";
-import { Container, Row, Col } from "reactstrap";
+import React from "react"
+import { useSpring, animated } from "react-spring"
+import { Container, Row, Col } from "reactstrap"
 
-const Loading = () => {
+const Loading = ({ loading }) => {
   const props = useSpring({
     from: { opacity: 0, color: "red" },
     to: [
@@ -11,7 +11,11 @@ const Loading = () => {
       { opacity: 0.5, color: "#008000" },
       { opacity: 0.8, color: "black" },
     ],
-  });
+  })
+
+  if (!loading) {
+    return null
+  }
 
   return (
     <Container
@@ -26,7 +30,7 @@ const Loading = () => {
         </Col>
       </Row>
     </Container>
-  );
-};
+  )
+}
 
-export default Loading;
+export default Loading

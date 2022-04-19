@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Container } from "reactstrap";
-import Loading from "../Components/Loading";
-import Message from "../Components/Message";
-import BlogCard from "./BlogCard";
+import React from "react"
+import { Link } from "react-router-dom"
+import { Container } from "reactstrap"
+import Loading from "../Components/Loading"
+import Message from "../Components/Message"
+import BlogCard from "./BlogCard"
 
 const BlogList = ({
   list,
@@ -21,12 +21,12 @@ const BlogList = ({
       user={user}
       dispatch={dispatch}
     />
-  ));
+  ))
 
   const noPostfound = () => {
     return (
       <>
-        <Container className="small">
+        <Container sm>
           {isAuthenticated ? (
             <Link to={`/post/${user.username}/new-story`}>
               Write your first story
@@ -36,8 +36,8 @@ const BlogList = ({
           )}
         </Container>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <>
@@ -46,7 +46,7 @@ const BlogList = ({
       {list.length === 0 && noPostfound()}
       {articlesList}
     </>
-  );
-};
+  )
+}
 
-export default BlogList;
+export default BlogList

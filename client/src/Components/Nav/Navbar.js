@@ -8,10 +8,6 @@ import SubNav from "./SubNav"
 const Navigation = (props) => {
   const { isAuthenticated } = useContext(AuthContext)
 
-  // Navbar Tooggle
-  const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => setIsOpen(!isOpen)
-
   const unauthenticatedNavbar = () => {
     return (
       <>

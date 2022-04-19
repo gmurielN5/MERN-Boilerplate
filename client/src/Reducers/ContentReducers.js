@@ -20,28 +20,28 @@ export const dataFetchReducer = (state, action) => {
       return {
         ...state,
         Loading: true,
-      };
+      }
     case "ADD_CONTENT_LOADING":
       return {
         ...state,
         Loading: true,
-      };
+      }
     case "DELETE_CONTENT_LOADING":
     case "EDIT_CONTENT_LOADING":
       return {
         ...state,
         articles: state.articles.map((a) => {
-          if (a._id === action.payload.id) return { ...a, Loading: true };
-          return a;
+          if (a._id === action.payload.id) return { ...a, Loading: true }
+          return a
         }),
-      };
+      }
     case "GET_CONTENT_SUCCESS":
       return {
         ...state,
         articles: action.payload.articles,
         Loading: false,
         message: [],
-      };
+      }
     case "ADD_CONTENT_SUCCESS":
       return {
         ...state,
@@ -49,37 +49,37 @@ export const dataFetchReducer = (state, action) => {
         message: action.payload.message,
         Loading: false,
         isError: false,
-      };
+      }
     case "EDIT_CONTENT_SUCCESS":
       return {
         ...state,
         articles: state.articles.map((a) => {
-          if (a._id === action.payload.id) return action.payload.article;
-          return a;
+          if (a._id === action.payload.id) return action.payload.article
+          return a
         }),
         Loading: false,
         isError: false,
-      };
+      }
     case "DELETE_CONTENT_SUCCESS":
       return {
         ...state,
         articles: state.articles.filter(
           (a) => a._id !== action.payload.article._id
         ),
-      };
+      }
     case "GET_CONTENT_FAILURE":
       return {
         ...state,
         isError: true,
         Loading: false,
         message: action.payload,
-      };
+      }
     case "ADD_CONTENT_FAILURE":
       return {
         ...state,
         isError: true,
         message: action.payload,
-      };
+      }
     case "DELETE_CONTENT_FAILURE":
     case "EDIT_CONTENT_FAILURE":
       return {
@@ -87,11 +87,11 @@ export const dataFetchReducer = (state, action) => {
         isError: true,
         articles: state.articles.map((a) => {
           if (a._id === action.payload.id)
-            return { ...a, message: action.payload };
-          return a;
+            return { ...a, message: action.payload }
+          return a
         }),
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}

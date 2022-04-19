@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
 import { Nav, NavItem, Button, Col, Row } from "reactstrap"
 import { AuthContext } from "../../Context/AuthContext"
-import Avatar from "./Avatar"
+import { User } from "./User"
 
-const UserNav = (props) => {
+const UserNav = ({ user }) => {
   const { dispatchFilter } = useContext(AuthContext)
   const handleShowDrafts = () => {
     dispatchFilter({ type: "SHOW_DRAFT_ARTICLES" })
@@ -16,14 +16,7 @@ const UserNav = (props) => {
   return (
     <Nav className="border-bottom border-dark align-items-center">
       <NavItem>
-        <Row className="align-items-center m-2">
-          <Col xs="4">
-            <Avatar user={props.user} thumbnail="thumbnail" />
-          </Col>
-          <Col xs="8">
-            <h3>{props.user.username}</h3>
-          </Col>
-        </Row>
+        <User user={user} />
       </NavItem>
       <NavItem>
         <Button onClick={handleShowDrafts}>Drafts</Button>

@@ -164,33 +164,21 @@ img {
   height: auto;
 }
 
-.avImg {
-  width: 80px;
-  height: 80px;
-}
-.avatarNav {
-  width: 32px;
-  height: 32px;
-  background-color: rgba(41, 41, 41, 0.5);
-  color: white;
-  text-align: center;
-}
-.avatarThumbnail {
+.avatar {
   width: 50px;
   height: 50px;
-  background-color: rgba(41, 41, 41, 0.5);
-  color: white;
-  text-align: center;
 }
 
-.initials {
-  position: relative;
-  top: 0.2em;
+.avatarTxt {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3.5em;
 }
+
 /* MAIN NAV -------- */
-.dropdown-menu.show {
-  transform: translate3d(-100px, 55px, 0px);
+.dropdown-header {
+  display: none;
 }
+
 /* ICONS -------- */
 
 .icons {
@@ -198,6 +186,18 @@ img {
   font-size: 28px;
 }
 
+/* HERO SECTION ------*/
+.heroAnimation {
+  display: none;
+}
 /* ================================= 
   MEDIA QUERIES
 ==================================== */
+@media screen and (min-width: 768px) {
+  .dropdown-header {
+    display: block;
+  }
+  .heroAnimation {
+    display: inline-block;
+  }
+}

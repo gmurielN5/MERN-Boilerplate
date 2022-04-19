@@ -2,7 +2,11 @@ import React, { useContext, useEffect } from "react"
 import { Container, Col, Row } from "reactstrap"
 import { AuthContext } from "../Context/AuthContext"
 import { getPublicPosts } from "../Services/ContentService"
-import BlogList from "../Components/BlogList"
+import Loading from "../Components/Loading"
+import Message from "../Components/Message"
+import { TrendingPost } from "../Components/TrendingPost"
+
+import { GraphUpArrow } from "react-bootstrap-icons"
 
 const Public = () => {
   const {
@@ -31,31 +35,41 @@ const Public = () => {
   })
 
   return (
-    <Container
-      fluid
-      style={{ height: "80vh", background: "#F24D2E" }}
-      className="border-bottom border-dark"
-    >
+    <Container fluid>
       <Row>
-        <Col>
+        <Col
+          sm
+          className="border-bottom border-dark"
+          style={{ background: "red", height: "70vh" }}
+        >
           <h1>text</h1>
         </Col>
-        <Col>
-          <p>image</p>
+        <Col
+          md="4"
+          style={{ background: "blue" }}
+          className="heroAnimation border-left border-dark"
+        >
+          <h1>animation</h1>
         </Col>
       </Row>
+      <Loading loading={store.Loading} />
+      <Message message={store.message} error={store.isError} />
+      {list.length !== 0 && (
+        <Container md className="border-bottom border-dark">
+          <Row className="p-3">
+            <GraphUpArrow size={20} />
+            <h4>Trending on Voice </h4>
+          </Row>
+          <Row>
+            {list.map((article, i) => (
+              <Col sm md="6" lg="4" key={i}>
+                <TrendingPost article={article} index={i} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      )}
     </Container>
-
-    //* <Container className="my-5">
-    //   <BlogList
-    //     list={list}
-    //     loading={store.Loading}
-    //     error={store.isError}
-    //     message={store.message}
-    //     isAuthenticated={isAuthenticated}
-    //     user={user}
-    //   />
-    // </Container>
   )
 }
 

@@ -1,30 +1,30 @@
-import React from 'react';
+import React from "react"
+import { Container } from "reactstrap"
 
-const Avatar = (props) => {
-    let className = '';
-        if (props.thumbnail) {
-            className += 'avatarThumbnail rounded-circle';
-        }else{
-            className += 'avatarNav rounded-circle';
-        }
-    return(
-        <>
-        {props.user.avatar ? 
-            <div>
-               <img src={props.user.avatar} alt="avatar" className={className} />
-            </div> 
-            : 
-            <div className={className}>
-            {props.thumbnail ? <h3 className="initials">
-                  {props.user.username.slice(0, 1).toUpperCase()}
-                  </h3> 
-                  :  <span className="initials">
-                  {props.user.username.slice(0, 1).toUpperCase()}
-                  </span> }
-            </div> 
-        }
+const Avatar = ({ user }) => {
+  return (
+    <>
+      {user.avatar ? (
+        <img src={user.avatar} alt="avatar" className="avatar rounded-circle" />
+      ) : (
+        <div className="avatar">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="50" fill="#333333" />
+            <text
+              x="50%"
+              y="50%"
+              textAnchor="middle"
+              fill="white"
+              dy=".3em"
+              className="avatarTxt"
+            >
+              {user.username.slice(0, 1).toUpperCase()}
+            </text>
+          </svg>
+        </div>
+      )}
     </>
-    )
+  )
 }
 
-export default Avatar;
+export default Avatar

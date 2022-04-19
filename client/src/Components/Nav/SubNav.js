@@ -1,8 +1,6 @@
 import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import {
-  Row,
-  Col,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -11,6 +9,7 @@ import {
 import { AuthContext } from "../../Context/AuthContext"
 import { removeToken } from "../../util"
 import Avatar from "./Avatar"
+import { User } from "./User"
 
 const SubNav = () => {
   const { user, setUser, setIsAuthenticated } = useContext(AuthContext)
@@ -27,25 +26,19 @@ const SubNav = () => {
 
   return (
     <UncontrolledDropdown
-      direction="down"
+      direction="start"
+      inNavbar
       nav
       isOpen={dropdownOpen}
       toggle={toggleButton}
     >
-      <DropdownToggle caret>
+      <DropdownToggle caret nav>
         <Avatar user={user} />
       </DropdownToggle>
-      <DropdownMenu>
+      <DropdownMenu right>
         <DropdownItem header>
           <Link to={`/post/${user.username}`}>
-            <Row className="align-items-end">
-              <Col xs="4">
-                <Avatar user={user} thumbnail="thumbnail" />
-              </Col>
-              <Col xs="8">
-                <h4>{user.username}</h4>
-              </Col>
-            </Row>
+            <User user={user} />
           </Link>
         </DropdownItem>
         <DropdownItem divider />
