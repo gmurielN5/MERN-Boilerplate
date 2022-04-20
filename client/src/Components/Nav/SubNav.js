@@ -26,7 +26,7 @@ const SubNav = () => {
 
   return (
     <UncontrolledDropdown
-      direction="start"
+      direction="down"
       inNavbar
       nav
       isOpen={dropdownOpen}

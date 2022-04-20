@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { Container, Col, Row } from "reactstrap"
+import { Container, Col, Row, Button } from "reactstrap"
 import { AuthContext } from "../Context/AuthContext"
 import { getPublicPosts } from "../Services/ContentService"
 import Loading from "../Components/Loading"
@@ -35,34 +35,42 @@ const Public = () => {
   })
 
   return (
-    <Container fluid>
+    <Container fluid className="hero">
       <Row>
-        <Col
-          sm
-          className="border-bottom border-dark"
-          style={{ background: "red", height: "70vh" }}
-        >
-          <h1>text</h1>
+        <Col sm className="border-bottom border-dark">
+          <Container sm className="p-5 ">
+            <Row>
+              <p className="heading">Start a blog for free</p>
+            </Row>
+            <Row className="pt-5">
+              <h3>Write, Read,</h3>
+            </Row>
+            <Row>
+              <h3>Discover, Share</h3>
+            </Row>
+            <Row>
+              <p>Exclusive content by developers, for developers</p>
+            </Row>
+            <Row className="pt-2">
+              <Button>Start writing</Button>
+            </Row>
+          </Container>
         </Col>
-        <Col
-          md="4"
-          style={{ background: "blue" }}
-          className="heroAnimation border-left border-dark"
-        >
+        <Col md={4} className="heroAnimation border-left border-dark">
           <h1>animation</h1>
         </Col>
       </Row>
       <Loading loading={store.Loading} />
       <Message message={store.message} error={store.isError} />
       {list.length !== 0 && (
-        <Container md className="border-bottom border-dark">
+        <Container md>
           <Row className="p-3">
-            <GraphUpArrow size={20} />
-            <h4>Trending on Voice </h4>
+            <GraphUpArrow size={24} />
+            <h3>Trending on Voice </h3>
           </Row>
           <Row>
             {list.map((article, i) => (
-              <Col sm md="6" lg="4" key={i}>
+              <Col sm md={6} xl={4} key={i}>
                 <TrendingPost article={article} index={i} />
               </Col>
             ))}

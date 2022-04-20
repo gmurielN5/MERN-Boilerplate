@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react"
 import {
   Container,
   Row,
@@ -9,87 +9,87 @@ import {
   Label,
   Input,
   Button,
-} from "reactstrap";
-import { AuthContext } from "../Context/AuthContext";
-import { useParams } from "react-router-dom";
-import { getProfile, updateProfile, deleteUser } from "../Services/UserService";
-import Editable from "../Components/Editable";
-import Loading from "../Components/Loading";
-import Message from "../Components/Message";
-import { removeToken } from "../util";
-import ImageUpload from "../Components/ImageUpload";
+} from "reactstrap"
+import { AuthContext } from "../Context/AuthContext"
+import { useParams } from "react-router-dom"
+import { getProfile, updateProfile, deleteUser } from "../Services/UserService"
+import Editable from "../Components/Editable"
+import Loading from "../Components/Loading"
+import Message from "../Components/Message"
+import { removeToken } from "../util"
+import ImageUpload from "../Components/ImageUpload"
 
 const Settings = ({ history }) => {
-  const { user, setUser, setIsAuthenticated } = useContext(AuthContext);
-  let params = useParams();
-  const inputRef = useRef({});
-  const [loading, setLoading] = useState(true);
-  const [update, setUpdate] = useState({ username: "", bio: "" });
-  const [fileData, setFileData] = useState();
-  const [avatar, setFile] = useState("");
-  const [imgpreview, setImgpreview] = useState("");
-  const [message, setMessage] = useState(null);
+  const { user, setUser, setIsAuthenticated } = useContext(AuthContext)
+  let params = useParams()
+  const inputRef = useRef({})
+  const [loading, setLoading] = useState(true)
+  const [update, setUpdate] = useState({ username: "", bio: "" })
+  const [fileData, setFileData] = useState()
+  const [avatar, setFile] = useState("")
+  const [imgpreview, setImgpreview] = useState("")
+  const [message, setMessage] = useState(null)
 
   useEffect(() => {
     getProfile(params.id)
       .then((data) => {
         if (params.id !== user.id) {
-          history.push("/error");
+          history.push("/error")
         }
-        setUpdate({ username: data.user.username, bio: data.user.bio });
-        setLoading(false);
+        setUpdate({ username: data.user.username, bio: data.user.bio })
+        setLoading(false)
       })
       .catch((error) => {
-        history.push("/error");
-      });
-  }, [params.id, user.id, history]);
+        history.push("/error")
+      })
+  }, [params.id, user.id, history])
 
   const handleChange = (e) => {
-    setUpdate({ ...update, [e.target.name]: e.target.value });
-  };
+    setUpdate({ ...update, [e.target.name]: e.target.value })
+  }
 
   // avatar image
   const handleFileChange = ({ target }) => {
-    setFileData(target.files[0]);
-    setFile(target.value);
-    const reader = new FileReader();
+    setFileData(target.files[0])
+    setFile(target.value)
+    const reader = new FileReader()
     reader.onload = (e) => {
-      setImgpreview(reader.result);
-    };
-    reader.readAsDataURL(target.files[0]);
-  };
+      setImgpreview(reader.result)
+    }
+    reader.readAsDataURL(target.files[0])
+  }
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("avatar", fileData);
-    formdata.append("username", update.username);
-    formdata.append("bio", update.bio);
+    e.preventDefault()
+    const formdata = new FormData()
+    formdata.append("avatar", fileData)
+    formdata.append("username", update.username)
+    formdata.append("bio", update.bio)
     updateProfile(user.id, formdata)
       .then((data) => {
-        const { user, message } = data;
-        setMessage(message);
+        const { user, message } = data
+        setMessage(message)
         if (!message.msgError) {
-          setUser(user);
+          setUser(user)
         }
       })
       .catch((error) => {
-        history.push("/error");
-      });
-  };
+        history.push("/error")
+      })
+  }
 
   const handleDeleteUser = (id) => {
     deleteUser(id)
       .then((data) => {
-        removeToken("token");
-        setIsAuthenticated(false);
-        setUser(null);
-        history.push("/signup");
+        removeToken("token")
+        setIsAuthenticated(false)
+        setUser(null)
+        history.push("/signup")
       })
       .catch((error) => {
-        history.push("/error");
-      });
-  };
+        history.push("/error")
+      })
+  }
 
   return (
     <div>
@@ -230,7 +230,7 @@ const Settings = ({ history }) => {
         </Container>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Settings;
+export default Settings

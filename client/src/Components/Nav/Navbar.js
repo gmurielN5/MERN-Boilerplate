@@ -37,7 +37,6 @@ const Navigation = (props) => {
       <Navbar
         color="faded"
         light
-        full
         expand="md"
         className="align-items-baseline border-bottom border-dark justify-content-between"
       >

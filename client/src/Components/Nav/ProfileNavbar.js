@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Nav, NavItem, Button, Col, Row } from "reactstrap"
+import { Nav, NavItem, Button } from "reactstrap"
 import { AuthContext } from "../../Context/AuthContext"
 import { User } from "./User"
 
