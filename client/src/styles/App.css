@@ -53,7 +53,7 @@ p {
 
 span {
   font-size: 0.75em;
-  color: #495057;
+  /* color: #495057; */
 }
 
 label {
@@ -237,5 +237,59 @@ textarea {
   }
   .heroAnimation {
     display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+  }
+  .stage {
+    position: relative;
+    min-width: 716px;
+    width: 716px;
+    height: 100%;
+    background-color: #dbe0cf;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .content {
+    position: absolute;
+    top: -150px;
+    left: 34px;
+    width: 120%;
+    height: 120%;
+    transform: rotate(-20deg);
+  }
+  .band {
+    position: relative;
+    margin: 0;
+    height: 102px;
+    font-weight: 600;
+    color: #d71111;
+    font-size: 135px;
+    letter-spacing: 0px;
+    line-height: 0.8;
+  }
+
+  .names {
+    display: block;
+    position: relative;
+    width: 150%;
+    height: 120px;
+    overflow: hidden;
+  }
+  .name {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    mix-blend-mode: multiply;
+  }
+
+  .blue {
+    color: #019ac5;
+    position: absolute;
+    top: 8px;
   }
 }

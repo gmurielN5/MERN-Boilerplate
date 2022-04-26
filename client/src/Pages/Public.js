@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react"
 import { Container, Col, Row, Button } from "reactstrap"
 import { AuthContext } from "../Context/AuthContext"
 import { getPublicPosts } from "../Services/ContentService"
+import { HeroAnimation } from "../Components/Hero/HeroAnimation"
 import Loading from "../Components/Loading"
 import Message from "../Components/Message"
 import { TrendingPost } from "../Components/TrendingPost"
@@ -56,8 +57,8 @@ const Public = () => {
             </Row>
           </Container>
         </Col>
-        <Col md={4} className="heroAnimation border-left border-dark">
-          <h1>animation</h1>
+        <Col md={4} className="heroAnimation border border-dark">
+          <HeroAnimation />
         </Col>
       </Row>
       <Loading loading={store.Loading} />
