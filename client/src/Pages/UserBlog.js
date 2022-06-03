@@ -34,7 +34,7 @@ const UserBlog = () => {
   return (
     <Container fluid>
       <ProfileNav user={user} />
-      <Container className="my-5">
+      <Container className="small">
         <BlogList
           list={filteredArticles}
           loading={store.Loading}

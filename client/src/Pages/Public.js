@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { Container, Col, Row, Button } from "reactstrap"
 import { AuthContext } from "../Context/AuthContext"
 import { getPublicPosts } from "../Services/ContentService"
@@ -36,38 +37,42 @@ const Public = () => {
   })
 
   return (
-    <Container fluid className="hero">
-      <Row>
-        <Col sm className="border-bottom border-dark">
-          <Container sm className="p-5 ">
-            <Row>
-              <p className="heading">Start a blog for free</p>
-            </Row>
-            <Row className="pt-5">
-              <h3>Write, Read,</h3>
-            </Row>
-            <Row>
-              <h3>Discover, Share</h3>
-            </Row>
-            <Row>
-              <p>Exclusive content by developers, for developers</p>
-            </Row>
-            <Row className="pt-2">
-              <Button>Start writing</Button>
-            </Row>
-          </Container>
-        </Col>
-        <Col md={4} className="heroAnimation border border-dark">
-          <HeroAnimation />
-        </Col>
-      </Row>
+    <Container fluid>
+      <Container fluid className="hero">
+        <Row>
+          <Col sm className="border-bottom border-dark">
+            <Container sm className="p-5 ">
+              <Row>
+                <p className="heading">Start a blog for free</p>
+              </Row>
+              <Row className="pt-5">
+                <h3>Write, Read,</h3>
+              </Row>
+              <Row>
+                <h3>Discover, Share</h3>
+              </Row>
+              <Row>
+                <p>Exclusive content by developers, for developers</p>
+              </Row>
+              <Row className="pt-2">
+                <Link to="/signup">
+                  <Button>Start writing</Button>
+                </Link>
+              </Row>
+            </Container>
+          </Col>
+          <Col md={4} className="heroAnimation border border-dark">
+            <HeroAnimation />
+          </Col>
+        </Row>
+      </Container>
       <Loading loading={store.Loading} />
       <Message message={store.message} error={store.isError} />
       {list.length !== 0 && (
         <Container md>
-          <Row className="p-3">
+          <Row className="d-flex align-items-baseline p-3">
             <GraphUpArrow size={24} />
-            <h3>Trending on Voice </h3>
+            <h4>Trending on Voice </h4>
           </Row>
           <Row>
             {list.map((article, i) => (

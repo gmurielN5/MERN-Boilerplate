@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react"
 import {
   Container,
   Row,
@@ -8,71 +8,71 @@ import {
   FormGroup,
   Input,
   Button,
-} from "reactstrap";
-import { AuthContext } from "../Context/AuthContext";
-import { addPost } from "../Services/ContentService";
-import { useParams } from "react-router-dom";
-import Editable from "../Components/Editable";
-import ImageUpload from "../Components/ImageUpload";
-import Message from "../Components/Message";
+} from "reactstrap"
+import { AuthContext } from "../Context/AuthContext"
+import { addPost } from "../Services/ContentService"
+import { useParams } from "react-router-dom"
+import Editable from "../Components/Editable"
+import ImageUpload from "../Components/ImageUpload"
+import Message from "../Components/Message"
 
 const StoryForm = ({ history }) => {
-  const { store, dispatch } = useContext(AuthContext);
-  let { username } = useParams();
+  const { store, dispatch } = useContext(AuthContext)
+  let { username } = useParams()
 
-  const [article, setArticle] = useState({ title: "", subtitle: "", body: "" });
-  const [hidden, setHidden] = useState(true);
+  const [article, setArticle] = useState({ title: "", subtitle: "", body: "" })
+  const [hidden, setHidden] = useState(true)
 
-  const inputRef = useRef({});
-  let timerID = useRef(null);
+  const inputRef = useRef({})
+  let timerID = useRef(null)
 
-  const [fileData, setFileData] = useState("");
-  const [img, setFile] = useState("");
-  const [imgpreview, setImgpreview] = useState("");
+  const [fileData, setFileData] = useState("")
+  const [img, setFile] = useState("")
+  const [imgpreview, setImgpreview] = useState("")
 
   const handleChange = (e) => {
-    setArticle({ ...article, [e.target.name]: e.target.value });
-  };
+    setArticle({ ...article, [e.target.name]: e.target.value })
+  }
 
   const resetForm = () => {
-    setArticle({ title: "", subtitle: "", body: "" });
-    setHidden(true);
-    setFileData("");
-  };
+    setArticle({ title: "", subtitle: "", body: "" })
+    setHidden(true)
+    setFileData("")
+  }
 
   //  image
   const handleFileChange = ({ target }) => {
-    const reader = new FileReader();
+    const reader = new FileReader()
     reader.onload = (e) => {
-      setImgpreview(reader.result);
-    };
-    reader.readAsDataURL(target.files[0]);
-    setFileData(target.files[0]);
-    setFile(target.value);
-  };
+      setImgpreview(reader.result)
+    }
+    reader.readAsDataURL(target.files[0])
+    setFileData(target.files[0])
+    setFile(target.value)
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("img", fileData);
-    formdata.append("title", article.title);
-    formdata.append("subtitle", article.subtitle);
-    formdata.append("body", article.body);
-    formdata.append("hidden", hidden);
-    addPost(username, formdata, dispatch);
+    e.preventDefault()
+    const formdata = new FormData()
+    formdata.append("img", fileData)
+    formdata.append("title", article.title)
+    formdata.append("subtitle", article.subtitle)
+    formdata.append("body", article.body)
+    formdata.append("hidden", hidden)
+    addPost(username, formdata, dispatch)
     if (!store.isError && !store.Loading) {
-      resetForm();
+      resetForm()
       timerID = setTimeout(() => {
-        history.push("/");
-      }, 2000);
+        history.push("/")
+      }, 2000)
     }
-  };
+  }
 
   useEffect(() => {
     return () => {
-      clearTimeout(timerID);
-    };
-  }, []);
+      clearTimeout(timerID)
+    }
+  }, [])
 
   // Sanitie and validate form with React hook Form
   return (
@@ -184,7 +184,7 @@ const StoryForm = ({ history }) => {
                  /> */}
       </Form>
     </Container>
-  );
-};
+  )
+}
 
-export default StoryForm;
+export default StoryForm

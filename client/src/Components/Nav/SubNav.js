@@ -41,7 +41,6 @@ const SubNav = () => {
             <User user={user} />
           </Link>
         </DropdownItem>
-        <DropdownItem divider />
         <DropdownItem>
           <Link to={`/post/${user.username}/new-story`}>Write a Story</Link>
         </DropdownItem>

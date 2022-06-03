@@ -9,13 +9,13 @@ const getStyle = ({ message, error }) => {
 }
 
 const Message = ({ message, error }) => {
-  if (!error || !message) {
+  if (message.length === 0) {
     return null
   }
   return (
     <Alert
       color={getStyle({ message, error })}
-      className="text-center font-weight-bold s"
+      className="text-center font-weight-bold shadow"
     >
       {!message.msgBody ? message : message.msgBody}
     </Alert>

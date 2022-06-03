@@ -18,12 +18,12 @@ import moment from "moment"
 const BlogCard = ({ article, user, dispatch }) => {
   return (
     <>
-      <Card className="my-5 border-0">
+      <Card className=" border-0">
         {article.author._id === user.id ? (
-          <Row className="border-bottom pb-3">
+          <Row className=" pb-3">
             <Col md={8}>
               <CardBody>
-                <CardTitle tag="h3">{article.title}</CardTitle>
+                <CardTitle tag="h4">{article.title}</CardTitle>
                 <CardText tag="h6" className="mb-2">
                   {article.subtitle}
                 </CardText>

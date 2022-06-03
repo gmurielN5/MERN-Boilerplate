@@ -14,7 +14,6 @@ import { User } from "./Nav/User"
 import moment from "moment"
 
 export const TrendingPost = ({ article, index }) => {
-  console.log(index)
   return (
     <>
       <Link to={`/post/${article.author.username}/${article._id}`}>
@@ -27,7 +26,7 @@ export const TrendingPost = ({ article, index }) => {
                 <User user={article.author} size="thumbnail" />
               </CardHeader>
               <CardBody>
-                <CardTitle tag="h3">{article.title}</CardTitle>
+                <CardTitle tag="h5">{article.title}</CardTitle>
                 <CardText tag="p" className="mb-2">
                   {article.subtitle}
                 </CardText>

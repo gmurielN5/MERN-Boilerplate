@@ -11,6 +11,7 @@ import { Text } from "./Text"
 
 const Trail = ({ open, children }) => {
   const items = React.Children.toArray(children)
+  console.log(items)
   const springRef = useSpringRef()
   const styles = useSpring({
     loop: true,

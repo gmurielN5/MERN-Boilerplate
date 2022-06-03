@@ -14,16 +14,18 @@ const UserNav = ({ user }) => {
   }
 
   return (
-    <Nav className="border-bottom border-dark align-items-center">
+    <Nav className="profileNav border-bottom border-dark align-items-center">
       <NavItem>
         <User user={user} />
       </NavItem>
-      <NavItem>
-        <Button onClick={handleShowDrafts}>Drafts</Button>
-      </NavItem>
-      <NavItem>
-        <Button onClick={handleShowPublished}>Published</Button>
-      </NavItem>
+      <div className="profileSubnav">
+        <NavItem>
+          <Button onClick={handleShowDrafts}>Drafts</Button>
+        </NavItem>
+        <NavItem>
+          <Button onClick={handleShowPublished}>Published</Button>
+        </NavItem>
+      </div>
     </Nav>
   )
 }
