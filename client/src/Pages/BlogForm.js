@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef, useContext } from "react"
+import { AuthContext } from "../Context/AuthContext"
 import {
   Container,
   Row,
   Col,
-  FormText,
+  Label,
   Form,
   FormGroup,
   Input,
   Button,
 } from "reactstrap"
-import { AuthContext } from "../Context/AuthContext"
 import { addPost } from "../Services/ContentService"
 import { useParams } from "react-router-dom"
 import Editable from "../Components/Editable"
@@ -76,112 +76,110 @@ const StoryForm = ({ history }) => {
 
   // Sanitie and validate form with React hook Form
   return (
-    <Container className="w-50 my-5 text-center">
+    <Container fluid>
       <Form onSubmit={handleSubmit}>
-        {store.message.length !== 0 ? (
-          <Message message={store.message} />
-        ) : null}
-        <Row className="my-5 justify-content-md-end">
-          <Button color="light" type="submit">
+        <Row className="justify-content-end py-2 px-4 border-bottom border-dark">
+          <Button color="dark" type="submit" className="mx-2">
             Save Draft
           </Button>
-          <Button color="light" type="submit" onClick={() => setHidden(false)}>
+
+          <Button
+            color="dark"
+            type="submit"
+            className="mx-2"
+            onClick={() => setHidden(false)}
+          >
             Publish
           </Button>
         </Row>
-        <FormGroup>
-          <Editable
-            text={article.title}
-            placeholder="Title"
-            childRef={inputRef}
-            type="input"
-            editButton="false"
-            header="true"
-          >
-            <Input
-              ref={inputRef}
-              type="text"
-              name="title"
+        {store.message.length !== 0 ? (
+          <Message message={store.message} />
+        ) : null}
+        <Container sm className="small">
+          <FormGroup className="p-0 mb-0">
+            <Editable
+              text={article.title}
               placeholder="Title"
-              value={article.title}
-              onChange={handleChange}
-              className="border-0"
-            />
-          </Editable>
-        </FormGroup>
-        <FormGroup>
-          <Editable
-            text={article.subtitle}
-            placeholder="Add a short description..."
-            childRef={inputRef}
-            type="input"
-            editButton="false"
-          >
-            <Input
-              ref={inputRef}
-              type="text"
-              name="subtitle"
-              placeholder="Add a short description..."
-              value={article.subtitle}
-              onChange={handleChange}
-              className="border-0"
-            />
-          </Editable>
-        </FormGroup>
-        <FormGroup row>
-          {!imgpreview ? (
-            <>
-              <Col sm={10} className="text-left">
-                <FormText color="muted">
-                  Add an image to your stories. File type: JPG, PNG
-                </FormText>
-              </Col>
-              <Col sm={2} className="text-right">
+              childRef={inputRef}
+              type="input"
+              editButton="false"
+              header="true"
+            >
+              <Input
+                ref={inputRef}
+                type="text"
+                name="title"
+                value={article.title}
+                onChange={handleChange}
+                placeholder="Title"
+                className="formheader p-0"
+              />
+            </Editable>
+          </FormGroup>
+          <FormGroup className="p-0 mb-0">
+            <Editable
+              text={article.subtitle}
+              placeholder="Tell your story..."
+              childRef={inputRef}
+              type="input"
+              editButton="false"
+            >
+              <Input
+                ref={inputRef}
+                type="text"
+                name="subtitle"
+                placeholder="Add a short description..."
+                value={article.subtitle}
+                onChange={handleChange}
+                className="p-0"
+              />
+            </Editable>
+          </FormGroup>
+
+          <FormGroup className="p-0 mb-0">
+            <Row>
+              {!imgpreview ? (
+                <Col sm md={10}>
+                  <Label className="formspan">
+                    Add an image to your story. File type: JPG, PNG
+                  </Label>
+                </Col>
+              ) : (
+                <Col sm md={12}>
+                  <img src={imgpreview} alt="preview" className="img" />
+                </Col>
+              )}
+              <Col className="text-right">
                 <ImageUpload
                   value={img}
                   handleFileChange={handleFileChange}
                   text="Edit"
                 />
               </Col>
-            </>
-          ) : (
-            <Col sm={12} className="text-center">
-              <img src={imgpreview} alt="preview" className="" />
-            </Col>
-          )}
-        </FormGroup>
+            </Row>
+          </FormGroup>
 
-        <FormGroup>
-          <Editable
-            text={article.body}
-            placeholder="Tell your Story..."
-            childRef={inputRef}
-            type="textarea"
-            editButton="false"
-          >
-            <Input
-              ref={inputRef}
+          <FormGroup className="py-2">
+            <Editable
+              text={article.body}
+              placeholder="add text"
+              childRef={inputRef}
               type="textarea"
-              name="body"
-              placeholder="Tell your Story..."
-              value={article.body}
-              onChange={handleChange}
-              className="border-0"
-            />
-          </Editable>
-        </FormGroup>
-
-        {/* Add Content preview from dropdownIcons */}
-        {/* <Row>
-                    {content}
-                </Row> */}
-        {/* <DropdownIcons 
-                     body={article.content}
-                     handleContent={handleChange}
-                     handleFileChange={handleFileChange}
-                     image={image}
-                     imgpreview={imgpreview}
-                 /> */}
+              editButton="false"
+              span="true"
+            >
+              <Input
+                ref={inputRef}
+                type="textarea"
+                name="body"
+                placeholder="Add text"
+                value={article.body}
+                onChange={handleChange}
+                className="border-0"
+              />
+            </Editable>
+          </FormGroup>
+        </Container>
       </Form>
     </Container>
   )

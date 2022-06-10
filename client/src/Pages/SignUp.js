@@ -62,7 +62,7 @@ const RegisterForm = ({ history }) => {
   return (
     <Container className="small">
       <Row className="d-flex justify-content-center pb-4">
-        <h4>Join Us</h4>
+        <h3>Join Us</h3>
       </Row>
       {message ? <Message message={message} /> : null}
       <Form onSubmit={onSubmit} className="px-2">

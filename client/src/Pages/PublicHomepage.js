@@ -10,15 +10,9 @@ import { TrendingPost } from "../Components/TrendingPost"
 
 import { GraphUpArrow } from "react-bootstrap-icons"
 
-const Public = () => {
-  const {
-    store,
-    dispatch,
-    dispatchFilter,
-    filteredArticles,
-    user,
-    isAuthenticated,
-  } = useContext(AuthContext)
+const PublicHomepage = () => {
+  const { store, dispatch, dispatchFilter, filteredArticles, isAuthenticated } =
+    useContext(AuthContext)
 
   useEffect(() => {
     let didCancel = false
@@ -32,9 +26,9 @@ const Public = () => {
     }
   }, [dispatch, dispatchFilter, isAuthenticated])
 
-  const list = filteredArticles.filter((post) => {
-    return post.author._id !== user.id
-  })
+  // const list = filteredArticles.filter((post) => {
+  //   return post.author._id !== user.id
+  // })
 
   return (
     <Container fluid>
@@ -46,10 +40,10 @@ const Public = () => {
                 <p className="heading">Start a blog for free</p>
               </Row>
               <Row className="pt-5">
-                <h3>Write, Read,</h3>
+                <h2>Write, Read,</h2>
               </Row>
               <Row>
-                <h3>Discover, Share</h3>
+                <h2>Discover, Share</h2>
               </Row>
               <Row>
                 <p>Exclusive content by developers, for developers</p>
@@ -68,14 +62,14 @@ const Public = () => {
       </Container>
       <Loading loading={store.Loading} />
       <Message message={store.message} error={store.isError} />
-      {list.length !== 0 && (
+      {filteredArticles.length !== 0 && (
         <Container md>
           <Row className="d-flex align-items-baseline p-3">
             <GraphUpArrow size={24} />
-            <h4>Trending on Voice </h4>
+            <h3>Trending on Voice </h3>
           </Row>
           <Row>
-            {list.map((article, i) => (
+            {filteredArticles.map((article, i) => (
               <Col sm md={6} xl={4} key={i}>
                 <TrendingPost article={article} index={i} />
               </Col>
@@ -87,4 +81,4 @@ const Public = () => {
   )
 }
 
-export default Public
+export default PublicHomepage

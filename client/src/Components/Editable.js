@@ -43,6 +43,9 @@ const Editable = ({
   if (props.header) {
     className += "formheader"
   }
+  if (props.span) {
+    className += "formspan"
+  }
 
   //Conditional to render col size
   let size = 8
@@ -60,16 +63,16 @@ const Editable = ({
           onKeyDown={(e) => handleKeyDown(e, type)}
         >
           {children}
-          <p color="muted" className="pt-3">
-            {label}
-          </p>
+          {label ? <span className="pt-3">{label}</span> : null}
         </Col>
       ) : (
-        <Col sm={size} className="text-left" onClick={() => setEditing(true)}>
+        <Col
+          sm={size}
+          className="d-flex flex-column"
+          onClick={() => setEditing(true)}
+        >
           <Label className={className}>{text || placeholder}</Label>
-          <p color="muted" className="pt-3">
-            {label}
-          </p>
+          {label ? <span className="pt-3">{label}</span> : null}
         </Col>
       )}
 

@@ -38,7 +38,7 @@ const Navigation = (props) => {
         color="faded"
         light
         expand="md"
-        className="align-items-baseline border-bottom border-dark justify-content-between"
+        className="align-items-center border-bottom border-dark justify-content-between"
       >
         <NavbarBrand>
           <Logo />

@@ -6,7 +6,8 @@ import ProtectedRoute from "./ProtectedRoute"
 import UnprotectedRoute from "./UnprotectedRoute"
 
 import Navbar from "../Components/Nav/Navbar"
-import Public from "../Pages/Public"
+import Home from "../Pages/Home"
+
 import Signup from "../Pages/SignUp"
 import Login from "../Pages/Login"
 import Settings from "../Pages/Settings"
@@ -28,12 +29,14 @@ import NotFound from "../Pages/NotFound"
 // ? not found page to design
 // ? blog page to design
 
+//! change / route to return home component
+
 function AppRoutes() {
   return (
     <Container fluid>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Public} />
+        <Route exact path="/" component={Home} />
         <UnprotectedRoute path="/signup" component={Signup} />
         <UnprotectedRoute path="/login" component={Login} />
         <ProtectedRoute path="/user/:id" component={Settings} />

@@ -11,17 +11,18 @@ import { removeToken } from "../../util"
 import Avatar from "./Avatar"
 import { User } from "./User"
 
-const SubNav = () => {
+const SubNav = ({ history }) => {
   const { user, setUser, setIsAuthenticated } = useContext(AuthContext)
 
   //Dropdown button
   const [dropdownOpen, setOpen] = useState(false)
   const toggleButton = () => setOpen(!dropdownOpen)
-
+  console.log(history)
   const LoggoutHandler = (e) => {
     removeToken("token")
     setUser(null)
     setIsAuthenticated(false)
+    history.push("/")
   }
 
   return (

@@ -30,15 +30,13 @@ const Trail = ({ open, children }) => {
   })
   useChain([springRef, trailRef])
   return (
-    <div>
+    <div className="band">
       {trail.map(({ ...style }, index) => (
-        <h1 className="band">
-          <animated.span className="names" style={{ ...styles }}>
-            <animated.div key={index} style={style}>
-              <animated.div>{items[index]}</animated.div>
-            </animated.div>
-          </animated.span>
-        </h1>
+        <animated.span className="names" style={{ ...styles }}>
+          <animated.div key={index} style={style}>
+            <animated.div>{items[index]}</animated.div>
+          </animated.div>
+        </animated.span>
       ))}
     </div>
   )

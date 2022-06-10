@@ -5,7 +5,6 @@ import {
   Col,
   Form,
   FormGroup,
-  FormText,
   Label,
   Input,
   Button,
@@ -98,7 +97,7 @@ const Settings = ({ history }) => {
       ) : (
         <Container className="small">
           <Row className="d-flex justify-content-center pb-4">
-            <h4>About You</h4>
+            <h3>About You</h3>
           </Row>
           {message ? <Message message={message} /> : null}
           <Form onSubmit={onSubmit} className="px-2">
@@ -148,12 +147,12 @@ const Settings = ({ history }) => {
 
             <FormGroup className="py-2">
               <Row className="m-0">
-                <Col sm md={8} className="p-0">
+                <Col sm md={8} className="d-flex flex-column p-0">
                   <Label for="avatar">Photo</Label>
-                  <p color="muted">
+                  <span>
                     Your photo appears on your Profile page and with your
                     stories. File type: JPG, PNG
-                  </p>
+                  </span>
                 </Col>
                 <Col>
                   {imgpreview ? (
@@ -187,7 +186,7 @@ const Settings = ({ history }) => {
           </Form>
 
           <Row className="d-flex justify-content-center py-4">
-            <h4>Account</h4>
+            <h3>Account</h3>
           </Row>
           <Row className="m-0">
             <Col sm md={8}>
@@ -195,9 +194,9 @@ const Settings = ({ history }) => {
                 <Label>Delete Account</Label>
               </Row>
               <Row className="py-3">
-                <p color="muted">
+                <span>
                   Permanently delete your account and all of your content.
-                </p>
+                </span>
               </Row>
             </Col>
             <Col className="text-right p-0">

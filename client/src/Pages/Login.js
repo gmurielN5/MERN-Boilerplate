@@ -47,7 +47,7 @@ const LoginForm = ({ history, location }) => {
   return (
     <Container className="small">
       <Row className="d-flex justify-content-center pb-4">
-        <h4>Welcome Back.</h4>
+        <h3>Welcome Back.</h3>
       </Row>
       <Form onSubmit={onSubmit} className="px-2">
         {message ? <Message message={message} /> : null}
