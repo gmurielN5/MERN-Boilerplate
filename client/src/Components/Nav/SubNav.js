@@ -17,7 +17,7 @@ const SubNav = ({ history }) => {
   //Dropdown button
   const [dropdownOpen, setOpen] = useState(false)
   const toggleButton = () => setOpen(!dropdownOpen)
-  console.log(history)
+
   const LoggoutHandler = (e) => {
     removeToken("token")
     setUser(null)

@@ -12,9 +12,15 @@ const Navigation = (props) => {
     return (
       <>
         <Nav>
+          <NavItem className="d-none d-sm-block m-2">
+            <Link to="/login">
+              <p>Sign in</p>
+            </Link>
+          </NavItem>
+
           <NavItem>
             <Link to="/signup">
-              <Button color="dark">Get Started</Button>
+              <Button color="dark">Start Writing</Button>
             </Link>
           </NavItem>
         </Nav>
@@ -37,7 +43,6 @@ const Navigation = (props) => {
       <Navbar
         color="faded"
         light
-        expand="md"
         className="align-items-center border-bottom border-dark justify-content-between"
       >
         <NavbarBrand>
