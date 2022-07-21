@@ -55,7 +55,7 @@ const ProtectedRouteArticle = require("./routes/article")
 app.use("/", indexRouter)
 app.use("/", authRouter)
 app.use("/user", protectedRouteUser)
-app.use("/post", ProtectedRouteArticle)
+app.use("/dashboard", ProtectedRouteArticle)
 
 // Error Middleware
 app.use((req, res, next) => {

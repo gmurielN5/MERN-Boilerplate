@@ -1,10 +1,11 @@
 import React, { useContext } from "react"
-import { Nav, NavItem, Button } from "reactstrap"
+import { Col, Nav, NavItem, Button } from "reactstrap"
 import { AuthContext } from "../../Context/AuthContext"
 import { User } from "./User"
 
 const UserNav = ({ user }) => {
   const { dispatchFilter } = useContext(AuthContext)
+
   const handleShowDrafts = () => {
     dispatchFilter({ type: "SHOW_DRAFT_ARTICLES" })
   }
@@ -14,18 +15,34 @@ const UserNav = ({ user }) => {
   }
 
   return (
-    <Nav className="profileNav border-bottom border-dark align-items-center">
-      <NavItem>
-        <User user={user} />
-      </NavItem>
-      <div className="profileSubnav">
+    <Nav fill>
+      <Col>
         <NavItem>
-          <Button onClick={handleShowDrafts}>Drafts</Button>
+          <User user={user} />
+        </NavItem>
+      </Col>
+      <Col sm="auto" className="d-flex justify-content-center">
+        <NavItem>
+          <Button
+            color="dark"
+            className="mx-2"
+            type="submit"
+            onClick={handleShowDrafts}
+          >
+            Drafts
+          </Button>
         </NavItem>
         <NavItem>
-          <Button onClick={handleShowPublished}>Published</Button>
+          <Button
+            color="dark"
+            type="submit"
+            className="mr-4"
+            onClick={handleShowPublished}
+          >
+            Published
+          </Button>
         </NavItem>
-      </div>
+      </Col>
     </Nav>
   )
 }

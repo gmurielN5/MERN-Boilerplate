@@ -1,12 +1,14 @@
-import React from "react"
-import { Route, Switch } from "react-router-dom"
+import React, { useContext } from "react"
+import { Route, Redirect, Switch } from "react-router-dom"
 import { Container } from "reactstrap"
+import { AuthContext } from "../Context/AuthContext"
 
 import ProtectedRoute from "./ProtectedRoute"
 import UnprotectedRoute from "./UnprotectedRoute"
 
 import Navbar from "../Components/Nav/Navbar"
-import Home from "../Pages/Home"
+import Dashboard from "../Pages/Dashboard"
+import PublicHomePage from "../Pages/PublicHomePage"
 
 import Signup from "../Pages/SignUp"
 import Login from "../Pages/Login"
@@ -32,17 +34,24 @@ import NotFound from "../Pages/NotFound"
 //! change / route to return home component
 
 function AppRoutes() {
+  const { isAuthenticated } = useContext(AuthContext)
   return (
     <Container fluid>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/">
+          {isAuthenticated ? <Redirect to="/dashboard" /> : <PublicHomePage />}
+        </Route>
         <UnprotectedRoute path="/signup" component={Signup} />
         <UnprotectedRoute path="/login" component={Login} />
+        <ProtectedRoute
+          path="/dashboard/:username/new-story"
+          component={BlogForm}
+        />
+        <ProtectedRoute path="/dashboard/:username" component={UserBlog} />
+        <ProtectedRoute path="/dashboard" component={Dashboard} />
         <ProtectedRoute path="/user/:id" component={Settings} />
-        <ProtectedRoute path="/post/:username/new-story" component={BlogForm} />
-        <Route path="/post/:username/:id" component={Post} />
-        <ProtectedRoute path="/post/:username" component={UserBlog} />
+        {/* <Route path="/:username/:id" component={Post} /> */}
         <Route component={NotFound} />
       </Switch>
     </Container>

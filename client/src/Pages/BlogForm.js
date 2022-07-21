@@ -74,28 +74,30 @@ const StoryForm = ({ history }) => {
     }
   }, [])
 
-  // Sanitie and validate form with React hook Form
+  // Sanitize and validate form with React hook Form
   return (
     <Container fluid>
       <Form onSubmit={handleSubmit}>
-        <Row className="justify-content-end py-2 px-4 border-bottom border-dark">
-          <Button color="dark" type="submit" className="mx-2">
-            Save Draft
-          </Button>
+        <Row className="border-bottom p-2 justify-content-end">
+          <Col sm="auto" className="d-flex justify-content-between">
+            <Button color="dark" type="submit" className="mx-2">
+              Save Draft
+            </Button>
 
-          <Button
-            color="dark"
-            type="submit"
-            className="mx-2"
-            onClick={() => setHidden(false)}
-          >
-            Publish
-          </Button>
+            <Button
+              color="dark"
+              type="submit"
+              className="mr-4"
+              onClick={() => setHidden(false)}
+            >
+              Publish
+            </Button>
+          </Col>
         </Row>
         {store.message.length !== 0 ? (
           <Message message={store.message} />
         ) : null}
-        <Container sm className="small">
+        <Container sm>
           <FormGroup className="p-0 mb-0">
             <Editable
               text={article.title}

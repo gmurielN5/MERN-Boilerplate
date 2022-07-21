@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../Context/AuthContext"
 import { Navbar, Nav, NavbarBrand, NavItem, Button } from "reactstrap"
-import { Logo } from "./Logo"
 import SubNav from "./SubNav"
 
 const Navigation = (props) => {
@@ -31,9 +30,7 @@ const Navigation = (props) => {
   const authenticatedNavbar = () => {
     return (
       <>
-        <Nav navbar>
-          <SubNav />
-        </Nav>
+        <SubNav />
       </>
     )
   }
@@ -43,10 +40,22 @@ const Navigation = (props) => {
       <Navbar
         color="faded"
         light
-        className="align-items-center border-bottom border-dark justify-content-between"
+        className={`border-bottom border-dark justify-content-between ${
+          isAuthenticated && "d-sm-none"
+        }`}
       >
-        <NavbarBrand>
-          <Logo />
+        <NavbarBrand className="me-auto">
+          <Link to="/">
+            <img
+              alt="logo"
+              src="/logo.svg"
+              style={{
+                height: 60,
+                width: 60,
+              }}
+            />
+            <h1>voice</h1>
+          </Link>
         </NavbarBrand>
         {!isAuthenticated ? unauthenticatedNavbar() : authenticatedNavbar()}
       </Navbar>

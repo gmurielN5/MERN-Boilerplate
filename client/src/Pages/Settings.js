@@ -91,127 +91,124 @@ const Settings = ({ history }) => {
   }
 
   return (
-    <div>
+    <>
       {loading ? (
         <Loading />
       ) : (
-        <Container className="small">
-          <Row className="d-flex justify-content-center pb-4">
-            <h3>About You</h3>
-          </Row>
-          {message ? <Message message={message} /> : null}
-          <Form onSubmit={onSubmit} className="px-2">
-            <FormGroup className="py-2">
-              <Editable
-                text={update.username}
-                placeholder={
-                  !update.username ? "Enter a username" : update.username
-                }
-                childRef={inputRef}
-                type="input"
-                label=" Your bio appears on your Profile page. Max 160 characters."
-              >
-                <Input
-                  ref={inputRef}
-                  type="text"
-                  name="username"
-                  className="p-0"
-                  placeholder={
-                    !update.username ? "Enter a username" : update.username
-                  }
-                  value={update.username}
-                  onChange={handleChange}
-                />
-              </Editable>
-            </FormGroup>
-
-            <FormGroup className="py-2">
-              <Editable
-                text={update.bio}
-                placeholder={!update.bio ? "Add a Bio" : update.bio}
-                childRef={inputRef}
-                type="input"
-                label="Your bio appears on your Profile page. Max 160 characters."
-              >
-                <Input
-                  type="textarea"
-                  ref={inputRef}
-                  name="bio"
-                  className="p-0"
-                  value={update.bio}
-                  placeholder={!update.bio ? "Add a Bio" : update.bio}
-                  onChange={handleChange}
-                />
-              </Editable>
-            </FormGroup>
-
-            <FormGroup className="py-2">
-              <Row className="m-0">
-                <Col sm md={8} className="d-flex flex-column p-0">
-                  <Label for="avatar">Photo</Label>
-                  <span>
-                    Your photo appears on your Profile page and with your
-                    stories. File type: JPG, PNG
-                  </span>
-                </Col>
-                <Col>
-                  {imgpreview ? (
-                    <img
-                      src={imgpreview}
-                      alt="preview"
-                      className="avatar rounded-circle"
-                    />
-                  ) : user.avatar ? (
-                    <img
-                      src={user.avatar}
-                      alt="avatar"
-                      className="avatar rounded-circle"
-                    />
-                  ) : null}
-                </Col>
-                <Col className="text-right p-0">
-                  <ImageUpload
-                    value={avatar}
-                    handleFileChange={handleFileChange}
-                    text="Edit"
-                  />
-                </Col>
-              </Row>
-            </FormGroup>
-            <Row className="d-flex justify-content-center">
-              <Button color="dark" type="submit">
-                Save
-              </Button>
+        <Container>
+          <Container sm>
+            <Row className="justify-content-center py-4">
+              <h3>About You</h3>
             </Row>
-          </Form>
+            <Row className="justify-content-center">
+              {message ? <Message message={message} /> : null}
+              <Form onSubmit={onSubmit}>
+                <FormGroup className="py-2">
+                  <Editable
+                    text={update.username}
+                    placeholder={
+                      !update.username ? "Enter a username" : update.username
+                    }
+                    childRef={inputRef}
+                    type="input"
+                    label=" Your bio appears on your Profile page. Max 160 characters."
+                  >
+                    <Input
+                      ref={inputRef}
+                      type="text"
+                      name="username"
+                      className="p-0"
+                      placeholder={
+                        !update.username ? "Enter a username" : update.username
+                      }
+                      value={update.username}
+                      onChange={handleChange}
+                    />
+                  </Editable>
+                </FormGroup>
 
-          <Row className="d-flex justify-content-center py-4">
-            <h3>Account</h3>
-          </Row>
-          <Row className="m-0">
-            <Col sm md={8}>
-              <Row>
-                <Label>Delete Account</Label>
-              </Row>
-              <Row className="py-3">
-                <span>
-                  Permanently delete your account and all of your content.
-                </span>
-              </Row>
-            </Col>
-            <Col className="text-right p-0">
+                <FormGroup className="py-2">
+                  <Editable
+                    text={update.bio}
+                    placeholder={!update.bio ? "Add a Bio" : update.bio}
+                    childRef={inputRef}
+                    type="input"
+                    label="Your bio appears on your Profile page. Max 160 characters."
+                  >
+                    <Input
+                      type="textarea"
+                      ref={inputRef}
+                      name="bio"
+                      className="p-0"
+                      value={update.bio}
+                      placeholder={!update.bio ? "Add a Bio" : update.bio}
+                      onChange={handleChange}
+                    />
+                  </Editable>
+                </FormGroup>
+
+                <FormGroup className="py-2">
+                  <Row className="m-0">
+                    <Col sm md={8} className="d-flex flex-column p-0">
+                      <Label for="avatar">Photo</Label>
+                      <span>
+                        Your photo appears on your Profile page and with your
+                        stories. File type: JPG, PNG
+                      </span>
+                    </Col>
+                    <Col>
+                      {imgpreview ? (
+                        <img
+                          src={imgpreview}
+                          alt="preview"
+                          className="avatar rounded-circle"
+                        />
+                      ) : user.avatar ? (
+                        <img
+                          src={user.avatar}
+                          alt="avatar"
+                          className="avatar rounded-circle"
+                        />
+                      ) : null}
+                    </Col>
+                    <Col className="text-right p-0">
+                      <ImageUpload
+                        value={avatar}
+                        handleFileChange={handleFileChange}
+                        text="Edit"
+                      />
+                    </Col>
+                  </Row>
+                </FormGroup>
+                <Row className="d-flex justify-content-center">
+                  <Button color="dark" type="submit">
+                    Save
+                  </Button>
+                </Row>
+              </Form>
+            </Row>
+          </Container>
+          <Container sm>
+            <Row className="justify-content-center py-4">
+              <h3>Account</h3>
+            </Row>
+            <Row sm className="justify-content-center align-items-center">
+              <Label>Delete Account</Label>
+              <span>
+                Permanently delete your account and all of your content.
+              </span>
               <Button
-                color="light"
-                type="button"
+                color="danger"
+                type="submit"
                 onClick={() => handleDeleteUser(user.id)}
               >
-                Delete this Account
+                Delete
               </Button>
-            </Col>
-          </Row>
+            </Row>
+          </Container>
         </Container>
       )}
-    </div>
+    </>
   )
 }
 
